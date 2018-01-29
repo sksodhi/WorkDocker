@@ -72,7 +72,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # GO
 #
-RUN cd /root/downloads && wget https://redirector.gvt1.com/edgedl/go/go1.9.2.linux-amd64.tar.gz
+RUN mkdir -p /root/downloads && cd /root/downloads && wget https://redirector.gvt1.com/edgedl/go/go1.9.2.linux-amd64.tar.gz
 RUN cd /root/downloads && tar -C /usr/local -xzf go1.9.2.linux-amd64.tar.gz
 RUN mkdir -p /root/go
 ENV PATH=$PATH:/usr/local/go/bin
