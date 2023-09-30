@@ -11,10 +11,11 @@ LABEL maintainer "Sandesh Kumar Sodhi"
 #
 # Run:
 #
-# [sudo] docker run --name mywork -i -t workdokcer /bin/bash
+# [sudo] docker run --name mywork -i -t workdocker /bin/bash
 #
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+ apache2 \
  autoconf \
  automake \
  bsdmainutils \
@@ -68,6 +69,25 @@ RUN pip install ipaddr
 RUN apt-get update && apt-get install -y --no-install-recommends \
  curl \
  git
+
+
+#
+# perl
+#
+# 'PERL_MM_USE_DEFAULT=1' makes perl automatically answer "yes" when CPAN asks
+# "Would you like to configure as much as possible automatically? [yes]"
+#
+RUN PERL_MM_USE_DEFAULT=1 cpan App::cpanminus
+RUN cpanm XML::Simple
+RUN cpanm CGI
+RUN cpanm Net::Telnet
+RUN cpanm Net::Telnet
+RUN cpanm XML::XPath
+RUN cpanm Net::SSH::Perl
+RUN cpanm Text::Banner
+RUN cpanm Getopt::Mixed
+
+
 
 #
 # GO
